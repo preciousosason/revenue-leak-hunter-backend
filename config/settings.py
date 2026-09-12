@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv(
     "DEBUG",
-    "True"
+    "False"
 ).lower() == "true"
 
 
