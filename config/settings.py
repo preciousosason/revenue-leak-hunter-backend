@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "192.168.57.31",
+    "https://revenue-leak-hunter-backend.onrender.com",
 ]
 
 if os.getenv("ALLOWED_HOSTS"):
@@ -172,6 +173,7 @@ SECURE_HSTS_PRELOAD = (
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://192.168.57.31:3000",
+    "https://revenue-leak-hunter-backend.onrender.com",
 ]
 
 if os.getenv("CORS_ALLOWED_ORIGINS"):
