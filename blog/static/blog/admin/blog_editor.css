@@ -1,0 +1,433 @@
+﻿/* =================================
+   BLOG BLOCK EDITOR
+================================= */
+
+#blog-block-editor {
+    margin: 24px 0;
+    max-width: 1100px;
+}
+
+
+/* =================================
+   EDITOR HEADER
+================================= */
+
+.ble-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    background: #ffffff;
+    border: 1px solid #d9dfe7;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ble-editor-header h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    color: #202124;
+}
+
+.ble-editor-header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+
+/* =================================
+   BLOCK CARD
+================================= */
+
+.ble-block {
+    margin-bottom: 14px;
+    background: #ffffff;
+    border: 1px solid #d9dfe7;
+    border-radius: 9px;
+    overflow: hidden;
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+.ble-block:hover {
+    border-color: #b8c1ce;
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.ble-block.ble-dragging {
+    opacity: 0.45;
+}
+
+.ble-block.ble-drag-over {
+    border-color: #417690;
+    box-shadow:
+        0 0 0 2px rgba(65, 118, 144, 0.15);
+}
+
+
+/* =================================
+   BLOCK TOOLBAR
+================================= */
+
+.ble-block-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 12px;
+    background: #f6f8fa;
+    border-bottom: 1px solid #e2e6eb;
+}
+
+.ble-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+
+.ble-drag-handle {
+    color: #8b949e;
+    font-size: 17px;
+    cursor: grab;
+    user-select: none;
+    letter-spacing: -3px;
+}
+
+.ble-block-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 6px;
+    background: #e8edf2;
+    color: #46515d;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ble-block-label {
+    color: #30363d;
+    font-size: 13px;
+}
+
+
+/* =================================
+   BLOCK ACTIONS
+================================= */
+
+.ble-block-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ble-action-button {
+    width: 30px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid #d0d7de;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #4b5563;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.ble-action-button:hover:not(:disabled) {
+    background: #f0f3f6;
+    border-color: #aeb7c2;
+}
+
+.ble-action-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.ble-delete-button {
+    color: #b42318;
+}
+
+.ble-delete-button:hover:not(:disabled) {
+    background: #fff1f0;
+    border-color: #e6aaa5;
+}
+
+
+/* =================================
+   BLOCK BODY
+================================= */
+
+.ble-block-body {
+    padding: 18px;
+}
+
+
+/* =================================
+   FIELDS
+================================= */
+
+.ble-field {
+    margin-bottom: 16px;
+}
+
+.ble-field:last-child {
+    margin-bottom: 0;
+}
+
+.ble-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #374151;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ble-input,
+.ble-textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ble-input:focus,
+.ble-textarea:focus {
+    outline: none;
+    border-color: #417690;
+    box-shadow:
+        0 0 0 2px rgba(65, 118, 144, 0.12);
+}
+
+.ble-textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+
+/* =================================
+   CODE
+================================= */
+
+.ble-code {
+    font-family:
+        Consolas,
+        Monaco,
+        "Courier New",
+        monospace;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+
+/* =================================
+   CHECKBOX
+================================= */
+
+.ble-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    color: #4b5563;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.ble-checkbox input {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* =================================
+   LIST EDITOR
+================================= */
+
+.ble-list-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ble-list-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ble-list-row .ble-input {
+    flex: 1;
+}
+
+.ble-small-button {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #b42318;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.ble-small-button:hover {
+    background: #fff1f0;
+}
+
+
+/* =================================
+   EMPTY STATE
+================================= */
+
+.ble-empty {
+    padding: 40px 20px;
+    margin-bottom: 14px;
+    border: 1px dashed #cbd5df;
+    border-radius: 9px;
+    background: #fafbfc;
+    color: #6b7280;
+    text-align: center;
+    font-size: 13px;
+}
+
+.ble-empty-message {
+    margin: 0;
+    padding: 10px 0;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.ble-warning {
+    padding: 10px;
+    border-radius: 6px;
+    background: #fff4ce;
+    color: #735c00;
+    font-size: 13px;
+}
+
+
+/* =================================
+   ADD BLOCK
+================================= */
+
+.ble-add-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 8px;
+}
+
+.ble-add-button {
+    padding: 11px 20px;
+    border: 1px solid #417690;
+    border-radius: 7px;
+    background: #417690;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.ble-add-button:hover {
+    background: #315c70;
+}
+
+
+/* =================================
+   ADD MENU
+================================= */
+
+.ble-add-menu {
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(190px, 1fr));
+    gap: 5px;
+    width: min(440px, calc(100vw - 40px));
+    padding: 8px;
+    background: #ffffff;
+    border: 1px solid #cbd5df;
+    border-radius: 8px;
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+.ble-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #30363d;
+    text-align: left;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.ble-menu-item:hover {
+    background: #f1f4f7;
+}
+
+.ble-menu-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 5px;
+    background: #eef1f4;
+    color: #4b5563;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 700px) {
+
+    .ble-editor-header {
+        padding: 17px;
+    }
+
+    .ble-block-body {
+        padding: 14px;
+    }
+
+    .ble-block-toolbar {
+        align-items: flex-start;
+    }
+
+    .ble-block-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .ble-add-menu {
+        grid-template-columns: 1fr;
+    }
+
+}

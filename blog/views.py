@@ -4,8 +4,54 @@ from django.shortcuts import get_object_or_404
 from .models import BlogPost
 
 
-def serialize_post(post):
-    return {
+def legacy_content_to_blocks(content):
+    """
+    Convert an old article's plain-text content
+    into paragraph blocks.
+
+    This keeps existing articles working while
+    newer articles use the block editor.
+    """
+
+    if not content:
+        return []
+
+    paragraphs = (
+        content
+        .split("\n\n")
+    )
+
+    return [
+        {
+            "type": "paragraph",
+            "text": paragraph.strip()
+        }
+        for paragraph in paragraphs
+        if paragraph.strip()
+    ]
+
+
+def get_post_blocks(post):
+    """
+    Return the block-based content.
+
+    New articles use `blocks`.
+    Older articles fall back to `content`.
+    """
+
+    if post.blocks:
+        return post.blocks
+
+    return legacy_content_to_blocks(
+        post.content
+    )
+
+
+def serialize_post(
+    post,
+    include_blocks=False
+):
+    data = {
         "title": post.title,
         "slug": post.slug,
         "excerpt": post.excerpt,
@@ -19,8 +65,16 @@ def serialize_post(post):
         ),
     }
 
+    if include_blocks:
+        data["blocks"] = get_post_blocks(
+            post
+        )
+
+    return data
+
 
 def blog_posts(request):
+
     posts = BlogPost.objects.filter(
         published=True
     ).order_by(
@@ -38,7 +92,10 @@ def blog_posts(request):
     })
 
 
-def blog_post_detail(request, slug):
+def blog_post_detail(
+    request,
+    slug
+):
 
     post = get_object_or_404(
         BlogPost,
@@ -47,5 +104,8 @@ def blog_post_detail(request, slug):
     )
 
     return JsonResponse({
-        "post": serialize_post(post)
+        "post": serialize_post(
+            post,
+            include_blocks=True
+        )
     })

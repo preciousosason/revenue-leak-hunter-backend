@@ -1,0 +1,27 @@
+﻿{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+
+    <link
+        rel="stylesheet"
+        href="{% static 'blog/admin/blog_editor.css' %}"
+    >
+
+    <script
+        src="{% static 'blog/admin/blog_editor.js' %}"
+        defer
+    ></script>
+{% endblock %}
+
+{% block after_field_sets %}
+
+    <div
+        id="blog-block-editor"
+        data-blocks-field-id="{{ adminform.form.blocks.id_for_label }}"
+    ></div>
+
+    {{ block.super }}
+
+{% endblock %}
